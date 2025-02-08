@@ -1,0 +1,45 @@
+/* FONTE */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Dongle&family=Modak&family=Monoton&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.body{
+    background-color: gray;
+    nav{
+        padding: 1%;
+        a{
+            text-decoration: none;
+            h1{
+                color: white;
+                font-family: Audiowide;
+                font-size: 3.5em;
+            }
+        }
+            li a{
+                color: white;
+                font-size: 1.5em;
+            }
+            .navbar-toggler, .btn-close{
+            background-color: #ffffff;
+        }
+
+        .navbar, .offcanvas-body, .offcanvas-header{
+            background-color: #212529;
+        }
+        .nav-item{
+            margin: 3%;
+        }
+    }
+}
+
+.formLogin{
+    background-color: white;
+    padding: 1%;
+    margin-top: 10%;
+    border-radius: 3%;
+    h1{
+        font-family: Audiowide;
+        text-align: center;
+    }
+    label{
+        font-size: 1.5em;
+    }
+}
