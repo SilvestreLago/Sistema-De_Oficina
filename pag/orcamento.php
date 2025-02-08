@@ -1,5 +1,5 @@
 <?php include_once "main.php";?>
-<div class="container" style="background-color: white; margin-top: 10%;">
+<div class="container" style="background-color: white; margin-top: 10%; margin-bottom: 5%;">
     <div style="background-color: #212529; color: white; padding: 1%; margin-left: -1.2%; margin-right: -1.2%;">
         <a class="btn btn-secondary" href="orcamento.php" role="button">Cadastrar</a>
         <a class="btn btn-primary" href="verOrcamento.php" role="button">Ver</a>
