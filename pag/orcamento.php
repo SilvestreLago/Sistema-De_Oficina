@@ -1,10 +1,10 @@
 <?php include_once "main.php";?>
-<div class="container" style="background-color: white; margin-top: 10%; margin-bottom: 5%;">
+<div class="container formulario">
     <div style="background-color: #212529; color: white; padding: 1%; margin-left: -1.2%; margin-right: -1.2%;">
         <a class="btn btn-secondary" href="orcamento.php" role="button">Cadastrar</a>
         <a class="btn btn-primary" href="verOrcamento.php" role="button">Ver</a>
     </div>
-    <h1 style="text-align: center; font-family: Audiowide;">Orçamento:</h1>
+    <h1>Orçamento:</h1>
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputCPF1" class="form-label">CPF:</label>

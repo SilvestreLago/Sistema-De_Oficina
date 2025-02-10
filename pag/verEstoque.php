@@ -1,10 +1,10 @@
 <?php include_once "main.php";?>
-<div class="container" style="background-color: white; margin-top: 10%;">
-    <div style="background-color: #212529; color: white; padding: 1%; margin-left: -1.2%; margin-right: -1.2%;">
+<div class="container formulario">
+    <div class="titulo">
         <a class="btn btn-primary" href="estoque.php" role="button" >Cadastrar</a>
         <a class="btn btn-secondary" href="verEstoque.php" role="button">Ver</a>
     </div>
-    <h1 style="text-align: center; font-family: Audiowide;">Estoque:</h1>
+    <h1>Estoque:</h1>
     <form action="" class="d-flex" role="search" style="padding: 1%;">
         <label for="">Nome do produto:</label>
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,5 +1,3 @@
-<?php include_once "main.php";?>
-
 <!-- BOTÃO ADICIONAR -->
 <div class="btn-add fixed-bottom" style="left: revert; margin: 1%;">
     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -43,6 +41,8 @@
         </div>
     </div>
 </div>
+
+<?php include_once "main.php";?>
 
 <div class="container" style="margin-top: 10%;">
     <table class="table table-hover table-bordered">

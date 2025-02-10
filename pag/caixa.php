@@ -1,6 +1,6 @@
 <?php include_once "main.php";?>
-<div class="container" style="background-color: white; margin-top: 10%;">
-    <h1 style="text-align: center; font-family: Audiowide;">Caixa:</h1>
+<div class="container formulario">
+    <h1>Caixa:</h1>
     <div class="mb-3">
         <h2>R$00,00</h2>
     </div>
