@@ -8,11 +8,11 @@
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputCPF1" class="form-label">CPF:</label>
-            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp">
+            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="00000000000">
         </div>
         <div class="mb-3">
             <label for="exampleInputNident1" class="form-label">N° identificador:</label>
-            <input type="number" class="form-control" id="exampleInputNident1" aria-describedby="nidentHelp">
+            <input type="number" class="form-control" id="exampleInputNident1" aria-describedby="nidentHelp" placeholder="00000">
         </div>
         <div class="mb-3">
             <label for="exampleInputData1" class="form-label">Data:</label>
@@ -20,11 +20,11 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputValor1" class="form-label">Valor R$:</label>
-            <input type="number" class="form-control" id="exampleInputValor1" aria-describedby="valorHelp">
+            <input type="number" class="form-control" id="exampleInputValor1" aria-describedby="valorHelp" placeholder="R$00.00">
         </div>
         <div class="mb-3">
             <label for="exampleInputDescricao1" class="form-label">Descrição:</label>
-            <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp">
+            <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp" placeholder="Exemplo de descrição do serviço">
         </div>
         
         <button type="submit" class="btn btn-primary">Cadastrar</button>

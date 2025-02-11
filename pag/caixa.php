@@ -7,14 +7,14 @@
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputDinheiro1" class="form-label">Adicionar R$:</label>
-            <input type="number" class="form-control" id="exampleInputDinheiro1" aria-describedby="dinheiroHelp">
+            <input type="number" class="form-control" id="exampleInputDinheiro1" aria-describedby="dinheiroHelp" placeholder="R$00.00">
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button> 
     </form>
     <form action="" style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputQuantidade2" class="form-label">Quantidade:</label>
-            <input type="number" class="form-control" id="exampleInputQuantidade2" aria-describedby="quantidadeHelp">
+            <input type="number" class="form-control" id="exampleInputQuantidade2" aria-describedby="quantidadeHelp" placeholder="0">
         </div>
         <button type="submit" class="btn btn-primary">Remover</button> 
     </form>

@@ -8,11 +8,11 @@
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputCPF1" class="form-label">CPF:</label>
-            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp">
+            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="00000000000">
         </div>
         <div class="mb-3">
             <label for="exampleInputNident1" class="form-label">N° identificador:</label>
-            <input type="number" class="form-control" id="exampleInputNident1" aria-describedby="nidentHelp">
+            <input type="number" class="form-control" id="exampleInputNident1" aria-describedby="nidentHelp" placeholder="00000">
         </div>
         <div class="mb-3">
             <label for="exampleInputData1" class="form-label">Data entrada:</label>
@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputDescricao1" class="form-label">Observação:</label>
-            <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp">
+            <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp" placeholder="Exemplo de observação">
         </div>
         <div class="mb-3">
             <label for="exampleInputFoto1" class="form-label">Foto antes:</label>

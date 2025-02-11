@@ -8,11 +8,11 @@
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputNome1" class="form-label">Nome do produto:</label>
-            <input type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp">
+            <input type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Item 0">
         </div>
         <div class="mb-3">
             <label for="exampleInputQuantidade1" class="form-label">Quantidade:</label>
-                <input type="number" class="form-control" id="exampleInputQuantidade1" aria-describedby="quantidadeHelp">
+            <input type="number" class="form-control" id="exampleInputQuantidade1" aria-describedby="quantidadeHelp" placeholder="0">
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>

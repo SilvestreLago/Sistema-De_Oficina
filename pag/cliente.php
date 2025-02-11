@@ -8,19 +8,19 @@
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputNome1" class="form-label">Nome:</label>
-            <input required type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp">
+            <input required type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Fulano da Silva">
         </div>
         <div class="mb-3">
             <label for="exampleInputEndereco1" class="form-label">Endereço:</label>
-            <input type="text" class="form-control" id="exampleInputEndereco1" aria-describedby="enderecoHelp">
+            <input type="text" class="form-control" id="exampleInputEndereco1" aria-describedby="enderecoHelp" placeholder="Rua XYZ n°0">
         </div>
         <div class="mb-3">
             <label for="exampleInputTelefone1" class="form-label">Telefone:</label>
-            <input type="tel" class="form-control" id="exampleInputTelefone1" aria-describedby="telefoneHelp">
+            <input type="tel" class="form-control" id="exampleInputTelefone1" aria-describedby="telefoneHelp" placeholder="74912345678">
         </div>
         <div class="mb-3">
             <label for="exampleInputCPF1" class="form-label">CPF:</label>
-            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp">
+            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="00000000000">
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
