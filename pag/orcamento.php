@@ -26,6 +26,14 @@
             <label for="exampleInputDescricao1" class="form-label">Descrição:</label>
             <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp" placeholder="Exemplo de descrição do serviço">
         </div>
+        <div class="mb-3">
+            <label for="exampleInputFoto1" class="form-label">Foto antes:</label>
+            <input type="file" class="form-control" id="exampleInputFoto1" aria-describedby="fotoHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputFoto2" class="form-label">Foto depois:</label>
+            <input type="file" class="form-control" id="exampleInputFoto2" aria-describedby="fotoHelp">
+        </div>
         
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
