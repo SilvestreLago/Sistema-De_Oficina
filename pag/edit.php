@@ -1,7 +1,7 @@
 <?php include_once "./main.php";?>
 
 <div class="container formulario">
-    <h1>Cliente:</h1>
+    <h1>Editar:</h1>
     <form style="padding: 1%;">
         <div class="mb-3">
             <label for="exampleInputNome1" class="form-label">Usuário:</label>

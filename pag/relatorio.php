@@ -4,12 +4,27 @@
   <meta charset="UTF-8">
   <title>Relatório Completo do Sistema</title>
   <style>
-    body { margin: 20px; }
-    .section-title { margin-top: 40px; margin-bottom: 20px; }
-    .table thead th { vertical-align: middle; text-align: center; }
-    .table tbody td { vertical-align: middle; }
-    .negativo { color: red; }
-    .positivo { color: green; }
+    body { 
+      margin: 20px; 
+    }
+    table {
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 10px;
+    }
+    thead, th{
+      background-color: #333;
+      color: white;
+    }
+    .negativo {
+      color: red;
+    }
+    .positivo {
+      color: green;
+    }
   </style>
 </head>
 <body>

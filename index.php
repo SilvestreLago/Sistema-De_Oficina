@@ -16,7 +16,7 @@
     <body class="body">
         <div class="container formLogin" style="max-width: 500px;">
             <h1>LOGIN</h1>
-            <form>
+            <form action="./pag/index.php">
                 <div class="mb-3">
                     <label for="exampleInputUser1" class="form-label">Usuário:</label>
                     <input type="text" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" placeholder="usuário">
