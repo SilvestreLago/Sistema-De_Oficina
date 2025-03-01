@@ -7,8 +7,8 @@
     <h1>Ordem de serviço:</h1>
     <form style="padding: 1%;">
         <div class="mb-3">
-            <label for="exampleInputCPF1" class="form-label">CPF:</label>
-            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="00000000000">
+            <label for="exampleInputCPF1" class="form-label">Nome:</label>
+            <input type="number" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Fulano da Silva">
         </div>
         <div class="mb-3">
             <label for="exampleInputNident1" class="form-label">N° identificador:</label>

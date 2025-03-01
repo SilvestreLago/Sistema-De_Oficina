@@ -7,8 +7,8 @@
     <h1>Orçamento:</h1>
     <form style="padding: 1%;">
         <div class="mb-3">
-            <label for="exampleInputCPF1" class="form-label">CPF:</label>
-            <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="00000000000">
+            <label for="exampleInputCPF1" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Fulano da Silva">
         </div>
         <div class="mb-3">
             <label for="exampleInputNident1" class="form-label">N° identificador:</label>
@@ -26,15 +26,6 @@
             <label for="exampleInputDescricao1" class="form-label">Descrição:</label>
             <input type="text" class="form-control" id="exampleInputDescricao1" aria-describedby="descricaoHelp" placeholder="Exemplo de descrição do serviço">
         </div>
-        <div class="mb-3">
-            <label for="exampleInputFoto1" class="form-label">Foto antes:</label>
-            <input type="file" class="form-control" id="exampleInputFoto1" aria-describedby="fotoHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputFoto2" class="form-label">Foto depois:</label>
-            <input type="file" class="form-control" id="exampleInputFoto2" aria-describedby="fotoHelp">
-        </div>
-        
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>

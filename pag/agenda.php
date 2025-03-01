@@ -24,12 +24,12 @@
                         <input class="form-control" id="exampleFormControlTextarea1" name="data" type="date"></input>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">N° da O.S:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os">
-                    </div>
-                    <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">N° do orçamento:</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="orcamento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">N° da O.S:</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os">
                     </div>
                 </div>
 
