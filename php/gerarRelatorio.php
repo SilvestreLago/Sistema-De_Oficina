@@ -4,7 +4,13 @@ require_once('../TCPDF/tcpdf.php');
 // Inicia o buffer de saída
 ob_start();
 // Inclui ou executa a página PHP que gera o HTML desejado
-include('../pag/relatorio.php');
+$tipo = $_GET['tipo'] ?? '';
+if($tipo == 'estoque'){
+    include('../pag/relatorioEstoque.php');
+}
+if($tipo == 'caixa'){
+    include('../pag/relatorioCaixa.php');
+}
 // Captura o HTML gerado
 $html = ob_get_clean();
 
