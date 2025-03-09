@@ -35,4 +35,9 @@ create table Estoque(
 	quantidade int(10)
 );
 
-
+create table Usuarios(
+	idUsuario int not null auto_increment primary key,
+	nome varchar(50),
+	senha varchar(100),
+	acesso bool
+);

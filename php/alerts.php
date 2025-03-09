@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET['BD'])){
     switch($_GET['BD']){
+        #ERRO
         case 'exec':
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Erro ao executar!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
@@ -19,6 +20,11 @@ if(isset($_GET['BD'])){
         case 'nIdentificador':
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Necessário cadastrar o número de identificação! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
+        case 'acesso':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Usuário ou senha incorretos! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+
+        #OK
         case 'cliente':
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Cliente cadastrado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;

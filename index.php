@@ -16,14 +16,15 @@
     <body class="body">
         <div class="container formLogin" style="max-width: 500px;">
             <h1>LOGIN</h1>
-            <form action="./pag/index.php">
+            <?php include_once "./php/alerts.php";?>
+            <form action="./php/login.php" method="POST">
                 <div class="mb-3">
                     <label for="exampleInputUser1" class="form-label">Usuário:</label>
-                    <input type="text" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" placeholder="usuário">
+                    <input type="text" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Usuário" name="nome" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Senha:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" name="senha" required>
                 </div>
                 <button type="submit" class="btn btn-primary container">Entrar</button>
             </form>

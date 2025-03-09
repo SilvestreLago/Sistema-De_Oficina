@@ -20,6 +20,7 @@ if($nome != NULL){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/estoque.php?BD=estoque');
+            exit;
         }
 
         #ERRO EXECUCAO
@@ -27,6 +28,7 @@ if($nome != NULL){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/estoque.php?BD=exec');
+            exit;
         }
 
     }
@@ -35,6 +37,7 @@ if($nome != NULL){
     else{
         $conn->close();
         header('Location: ../pag/estoque.php?BD=stmt');
+        exit;
     }
 }else{
     $conn->close();

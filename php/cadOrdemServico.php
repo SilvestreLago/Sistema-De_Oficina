@@ -65,6 +65,7 @@ if($nIdentificador != NULL){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/ordemServico.php?BD=ordemServico');
+            exit;
         }
 
         #ERRO EXECUCAO
@@ -72,6 +73,7 @@ if($nIdentificador != NULL){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/ordemServico.php?BD=exec');
+            exit;
         }
     }
 
@@ -79,6 +81,7 @@ if($nIdentificador != NULL){
     else{
         $conn->close();
         header('Location: ../pag/ordemServico.php?BD=stmt');
+        exit;
     }
 }else{
     $conn->close();
