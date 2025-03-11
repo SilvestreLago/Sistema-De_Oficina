@@ -41,3 +41,12 @@ create table Usuarios(
 	senha varchar(100),
 	acesso bool
 );
+
+create table Caixa(
+	idCaixa int not null auto_increment primary key,
+	valor decimal(10,2),
+	tipo ENUM('Fisico', 'Banco', 'Cartao'),
+	data date,
+	idUsuario int not null,
+	FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
+);

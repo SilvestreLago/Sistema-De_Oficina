@@ -5,7 +5,7 @@ include_once './conexao.php';
 #VARIAVEIS
 $nome = htmlspecialchars(strip_tags($_POST['nome'])) ?? NULL;
 $nIdentificador = htmlspecialchars(strip_tags($_POST['nIdentificador'])) ?? NULL;
-$data = htmlspecialchars(strip_tags($_POST['data'])) ?? 'NULL';
+$data = htmlspecialchars(strip_tags($_POST['data'])) ?? NULL;
 $valor = htmlspecialchars(strip_tags($_POST['valor'])) ?? NULL;
 $descricao = htmlspecialchars(strip_tags($_POST['descricao'])) ?? NULL;
 

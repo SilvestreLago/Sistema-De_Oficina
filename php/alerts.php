@@ -5,6 +5,15 @@ if(isset($_GET['BD'])){
         case 'exec':
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Erro ao executar!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
+        case 'execInsert':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Erro ao executar a inserção!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'execUsuario':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Erro ao executar pelo usuário!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'valores':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Necessário inserir um valor!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
         case 'stmt':
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Erro de conexão!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
@@ -36,6 +45,9 @@ if(isset($_GET['BD'])){
             break;
         case 'estoque':
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Item cadastrado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'caixa':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Valor cadastrado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
     }
 }
