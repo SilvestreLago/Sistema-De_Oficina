@@ -9,9 +9,15 @@ $valor = htmlspecialchars(strip_tags($_POST['valor'])) ?? NULL;
 $tipo = htmlspecialchars(strip_tags($_POST['tipo'])) ?? NULL;
 $data = new DateTime();
 $data = $data->format("Y-m-d");
+$remover = htmlspecialchars(strip_tags($_POST['remover'])) ?? NULL;
 
+#CASO SEJA PARA REMOÇÃO ALTERA O VALOR
+if($remover == 'TRUE' and $remover != NULL){
+    $valor = '-'.$valor;
+    echo $valor;
+}
 
-if($user and $valor and $tipo and $data){
+if($user and $valor and $tipo and $data and $remover){
     #COLETAR O ID DO USUARIO
     $sql = 'SELECT idUsuario FROM SistemaOficina.Usuarios as U WHERE U.Nome = ?';
     $stmt = $conn->prepare($sql);
