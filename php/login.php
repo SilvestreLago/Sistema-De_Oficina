@@ -25,6 +25,7 @@ if($usuario != NULL and $senha != NULL){
             session_start();
             $_SESSION['login'] = TRUE;
             $_SESSION['acesso'] = $credencial['acesso'];
+            echo $_SESSION['acesso'];
             $_SESSION['usuario'] = $credencial['nome'];
 
             #REDIRECIONAMENTO

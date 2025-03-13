@@ -49,6 +49,12 @@ if(isset($_GET['BD'])){
         case 'caixa':
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Valor cadastrado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
+        case 'alterado':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Dados alterado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'addUser':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Usuário adicionado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
     }
 }
 ?>
