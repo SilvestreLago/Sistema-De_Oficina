@@ -10,32 +10,29 @@ $dataSaida = htmlspecialchars(strip_tags($_POST['dataSaida'])) ?? NULL;
 $observacao = htmlspecialchars(strip_tags($_POST['observacao'])) ?? NULL;
 
 if($nIdentificador != NULL){
-    # MOVENDO A FOTO ANTES PARA O DIRETÓRIO DE FOTOS
-    if(!empty($_FILES['fotoAntes']) && $_FILES['fotoAntes']['error'] === UPLOAD_ERR_OK){
-        $destinoAntes = "../fotosAntes/$nIdentificador.png";
-        if(move_uploaded_file($_FILES['fotoAntes']["tmp_name"], $destinoAntes)) {
-            $fotoAntes = $destinoAntes;
-        }else{
-            $conn->close();
-            header('Location: ../pag/ordemServico.php?BD=fotoAntes');
-            exit;
-        }
-    } else{
-        $fotoAntes = NULL; 
-    }
 
-    # MOVENDO A FOTO DEPOIS PARA O DIRETÓRIO DE FOTOS
-    if(!empty($_FILES['fotoDepois']) && $_FILES['fotoDepois']['error'] === UPLOAD_ERR_OK){
-        $destinoDepois = "../fotosDepois/$nIdentificador.png";
-        if(move_uploaded_file($_FILES['fotoDepois']["tmp_name"], $destinoDepois)) {
-            $fotoDepois = $destinoDepois;
-        } else{
+    #ID CLIENTE
+    $sqlID = "SELECT idCliente FROM SistemaOficina.Cliente WHERE nome = ?";
+    $stmtID = $conn->prepare($sqlID);
+
+    if($stmtID){
+        $stmtID->bind_param('s', $nome);
+        if($stmtID->execute()){
+            $resultID = $stmtID->get_result();
+            $idCliente = $resultID->fetch_assoc()['idCliente'];
+            $stmtID->close();
+            echo $idCliente;
+            if($idCliente == NULL){
+                $conn->close();
+                header('Location: ../pag/ordemServico.php?BD=IDCliente');
+                exit;
+            }
+        }else{
+            $stmtID->close();
             $conn->close();
-            header('Location: ../pag/ordemServico.php?BD=fotoDepois');
+            header('Location: ../pag/ordemServico.php?BD=IDCliente');
             exit;
         }
-    } else{
-        $fotoDepois = NULL;
     }
 
     #CONFIGURAÇÃO DAS VARIAVEIS
@@ -52,24 +49,54 @@ if($nIdentificador != NULL){
     }
 
     #SQL
-    $sql = "INSERT INTO SistemaOficina.ordemServico (nome, nIdentificador, dataEntrada, dataSaida, observacao, fotoAntes, fotoDepois) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO SistemaOficina.ordemServico (nome, nIdentificador, dataEntrada, dataSaida, observacao, fotoAntes, fotoDepois, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     #VERIFICACAO
     if($stmt){
         #SQLINJECTION
-        $stmt->bind_param('sisssss', $nome, $nIdentificador, $dataEntradaFormatada, $dataSaidaFormatada, $observacao, $fotoAntes, $fotoDepois);
+        $stmt->bind_param('sisssssi', $nome, $nIdentificador, $dataEntradaFormatada, $dataSaidaFormatada, $observacao, $fotoAntes, $fotoDepois, $idCliente);
 
         #OK
-        if($stmt->execute()){
+        try{
+            $stmt->execute();
             $stmt->close();
             $conn->close();
+
+            # MOVENDO A FOTO ANTES PARA O DIRETÓRIO DE FOTOS
+            if(!empty($_FILES['fotoAntes']) && $_FILES['fotoAntes']['error'] === UPLOAD_ERR_OK){
+                $destinoAntes = "../fotosAntes/$nIdentificador.png";
+                if(move_uploaded_file($_FILES['fotoAntes']["tmp_name"], $destinoAntes)) {
+                    $fotoAntes = $destinoAntes;
+                }else{
+                    $conn->close();
+                    header('Location: ../pag/ordemServico.php?BD=fotoAntes');
+                    exit;
+                }
+            } else{
+                $fotoAntes = NULL; 
+            }
+
+            # MOVENDO A FOTO DEPOIS PARA O DIRETÓRIO DE FOTOS
+            if(!empty($_FILES['fotoDepois']) && $_FILES['fotoDepois']['error'] === UPLOAD_ERR_OK){
+                $destinoDepois = "../fotosDepois/$nIdentificador.png";
+                if(move_uploaded_file($_FILES['fotoDepois']["tmp_name"], $destinoDepois)) {
+                    $fotoDepois = $destinoDepois;
+                } else{
+                    $conn->close();
+                    header('Location: ../pag/ordemServico.php?BD=fotoDepois');
+                    exit;
+                }
+            } else{
+                $fotoDepois = NULL;
+            }
+
             header('Location: ../pag/ordemServico.php?BD=ordemServico');
             exit;
         }
 
         #ERRO EXECUCAO
-        else{
+        catch(Exception $e){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/ordemServico.php?BD=exec');

@@ -16,7 +16,8 @@ if($nome != NULL){
         $stmt->bind_param('si', $nome, $quantidade);
 
         #OK
-        if($stmt->execute()){
+        try{
+            $stmt->execute();
             $stmt->close();
             $conn->close();
             header('Location: ../pag/estoque.php?BD=estoque');
@@ -24,7 +25,7 @@ if($nome != NULL){
         }
 
         #ERRO EXECUCAO
-        else{
+        catch(Exception $e){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/estoque.php?BD=exec');

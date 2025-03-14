@@ -9,7 +9,7 @@
     <form style="padding: 1%;" action="../php/cadOrcamento.php" method="POST">
         <div class="mb-3">
             <label for="exampleInputCPF1" class="form-label">Nome:</label>
-            <input type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Fulano da Silva" name="nome">
+            <input type="text" class="form-control" id="exampleInputNome1" aria-describedby="nomeHelp" placeholder="Fulano da Silva" name="nome" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputNident1" class="form-label">N° identificador:</label>

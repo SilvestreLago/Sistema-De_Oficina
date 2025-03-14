@@ -3,7 +3,7 @@ use SistemaOficina;
 
 create table Cliente(
 	idCliente int not null auto_increment primary key,
-	nome varchar(50),
+	nome varchar(50) UNIQUE,
 	endereco varchar(50),
 	tel varchar(13),
 	cpf varchar(11)
@@ -12,26 +12,30 @@ create table Cliente(
 create table Orcamento(
 	idOrcamento int not null auto_increment primary key,
 	nome varchar(50),
-	nIdentificador int(10),
+	nIdentificador int(10) UNIQUE,
 	data date,
 	valor int(10),
-	descricao varchar(500)
+	descricao varchar(500),
+	idCliente int not null,
+	FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
 );
 
 create table ordemServico(
 	idOrdemServico int not null auto_increment primary key,
 	nome varchar(50),
-	nIdentificador int(10),
+	nIdentificador int(10) UNIQUE,
 	dataEntrada date,
 	dataSaida date,
 	observacao varchar(500),
 	fotoAntes varchar(200),
-	fotoDepois varchar(200)
+	fotoDepois varchar(200),
+	idCliente int not null,
+	FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
 );
 
 create table Estoque(
 	idEstoque int not null auto_increment primary key,
-	nome varchar(50),
+	nome varchar(50) UNIQUE,
 	quantidade int(10)
 );
 

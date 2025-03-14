@@ -83,10 +83,11 @@ if($nome != NULL){
     $stmtNome = $conn->prepare($sqlNome);
     if($stmtNome){
         $stmtNome->bind_param('ss', $nome, $nomeAntigo);
-        if($stmtNome->execute()){
+        try{
+            $stmtNome->execute();
             $stmtNome->close();
         }
-        else{
+        catch(Exception $e){
             $stmtNome->close();
             $conn->close();
             header('Location: ../pag/verCliente.php?BD=exec');

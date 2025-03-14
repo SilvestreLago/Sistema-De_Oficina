@@ -20,7 +20,8 @@ if($nome != NULL){
         $stmt->bind_param('ssss', $nome, $endereco, $tel, $cpf);
 
         #OK
-        if($stmt->execute()){
+        try{
+            $stmt->execute();
             $stmt->close();
             $conn->close();
             header('Location: ../pag/cliente.php?BD=cliente');
@@ -28,7 +29,7 @@ if($nome != NULL){
         }
 
         #ERRO EXECUCAO
-        else{
+        catch(Exception $e){
             $stmt->close();
             $conn->close();
             header('Location: ../pag/cliente.php?BD=exec');
