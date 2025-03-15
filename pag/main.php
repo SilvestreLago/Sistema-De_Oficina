@@ -1,3 +1,4 @@
+<?php include_once '../php/index.php'?>
 <!doctype html>
 <html lang="pt-br">
     <head>

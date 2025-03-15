@@ -11,6 +11,12 @@ if($tipo == 'estoque'){
 if($tipo == 'caixa'){
     include('../pag/relatorioCaixa.php');
 }
+if($tipo == 'orcamento'){
+    include('../pag/relatorioOrcamento.php');
+}
+if($tipo == 'ordemServico'){
+    include('../pag/relatorioOrdemServico.php');
+}
 // Captura o HTML gerado
 $html = ob_get_clean();
 

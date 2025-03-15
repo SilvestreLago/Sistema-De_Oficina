@@ -9,7 +9,7 @@ $data = htmlspecialchars(strip_tags($_POST['data'])) ?? NULL;
 $valor = htmlspecialchars(strip_tags($_POST['valor'])) ?? NULL;
 $descricao = htmlspecialchars(strip_tags($_POST['descricao'])) ?? NULL;
 
-if($nIdentificador != NULL){
+if($nIdentificador != NULL and $nome != NULL and $data != NULL){
     #CONFIGURAÇÃO DAS VARIAVEIS
     if($data != NULL){
         $dataFormatada= date('Y-m-d', strtotime(str_replace('/', '-', $data)));

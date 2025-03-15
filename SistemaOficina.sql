@@ -54,3 +54,18 @@ create table Caixa(
 	idUsuario int not null,
 	FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario)
 );
+
+create table Agenda(
+	idAgenda int not null auto_increment primary key,
+	data date,
+	idCliente int not null,
+	FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
+	idOrcamento int not null,
+	FOREIGN KEY (idOrcamento) REFERENCES Orcamento(idOrcamento),
+	idOrdemServico int not null,
+	FOREIGN KEY (idOrdemServico) REFERENCES ordemServico(idOrdemServico),
+	concluido bool
+);
+
+insert into SistemaOficina.Usuarios(nome, senha, acesso) values('Admin', '$2y$10$xAP5xM50ULz23PutlxYdbesjpRZBUhXV18drKtzVKikGIL0VxNux2', TRUE);
+

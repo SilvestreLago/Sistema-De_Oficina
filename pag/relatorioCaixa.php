@@ -1,3 +1,4 @@
+<?php include_once '../php/index.php'?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -28,11 +29,56 @@
   </style>
 </head>
 <body>
+<?php 
+  # CONECTAR AO BD
+  include_once('../php/conexao.php');
+
+  # Ajustar o formato da data para o padrão MySQL
+  $data = htmlspecialchars(strip_tags($_POST['data']));
+  $data = date("Y-m-d", strtotime($data));
+
+  date_default_timezone_set('America/Sao_Paulo');
+  $dataRelatorio = date('d/m/Y');
+
+  # Queries SQL corrigidas com aspas simples
+  $sqlEntradaFisico = "SELECT * FROM SistemaOficina.Caixa WHERE valor > 0 AND data = '$data' AND tipo = 'Fisico'";
+  $resultEntradaFisico = $conn->query($sqlEntradaFisico);
+
+  $sqlEntradaCartao = "SELECT * FROM SistemaOficina.Caixa WHERE valor > 0 AND data = '$data' AND tipo = 'Cartao'";
+  $resultEntradaCartao = $conn->query($sqlEntradaCartao);
+
+  $sqlEntradaBanco = "SELECT * FROM SistemaOficina.Caixa WHERE valor > 0 AND data = '$data' AND tipo = 'Banco'";
+  $resultEntradaBanco = $conn->query($sqlEntradaBanco);
+
+  $sqlSaidaFisico = "SELECT * FROM SistemaOficina.Caixa WHERE valor < 0 AND data = '$data' AND tipo = 'Fisico'";
+  $resultSaidaFisico = $conn->query($sqlSaidaFisico);
+
+  $sqlSaidaCartao = "SELECT * FROM SistemaOficina.Caixa WHERE valor < 0 AND data = '$data' AND tipo = 'Cartao'";
+  $resultSaidaCartao = $conn->query($sqlSaidaCartao);
+
+  $sqlSaidaBanco = "SELECT * FROM SistemaOficina.Caixa WHERE valor < 0 AND data = '$data' AND tipo = 'Banco'";
+  $resultSaidaBanco = $conn->query($sqlSaidaBanco);
+
+  # Inicialização das variáveis de soma
+  $totalEntradaFisico = 0;
+  $totalEntradaCartao = 0;
+  $totalEntradaBanco = 0;
+  $totalSaidaFisico = 0;
+  $totalSaidaCartao = 0;
+  $totalSaidaBanco = 0;
+  $totalEntrada = 0;
+  $totalSaida = 0;
+
+
+  $data = date("d/m/Y", strtotime($data));
+
+  ?>
 <div class="container">
     <!-- CABEÇALHO -->
     <header class="text-center">
-        <h1 class="mt-4">Oficina Campinense: Relatório de caixa</h1>
-        <p class="lead">Relatório gerado em: DD/MM/AAAA HH:MM</p>
+      <h1 class="mt-4" style="text-align: center; color:red; font-style: italic; font-size: 2em;">Oficina <span style="color: blue;">Campinense</span></h1>
+      <p style="text-align: center;">Relatório de caixa gerado em: <?php echo $dataRelatorio;?></p>
+      <p style="text-align: center;">Relatório de caixa referente a data: <?php echo $data?></p>
     </header>
 
     <!-- ENTRADAS FINANCEIRAS FÍSICO -->
@@ -50,18 +96,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>101</td>
-              <td>01/04/2025</td>
-              <td class="positivo">R$ 1.000,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>102</td>
-              <td>05/04/2025</td>
-              <td class="positivo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+            <?php 
+            $key = 0;
+              foreach($resultEntradaFisico as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalEntradaFisico += $row['valor'];
+                $totalEntrada += $row['valor'];
+              }
+            ?>
           </tbody>
         </table>
       </div>
@@ -82,18 +134,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>101</td>
-              <td>01/04/2025</td>
-              <td class="positivo">R$ 1.000,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>102</td>
-              <td>05/04/2025</td>
-              <td class="positivo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+          <?php 
+            $key = 0;
+              foreach($resultEntradaCartao as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalEntradaCartao += $row['valor'];
+                $totalEntrada += $row['valor'];
+              }
+            ?>
           </tbody>
         </table>
       </div>
@@ -114,18 +172,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>101</td>
-              <td>01/04/2025</td>
-              <td class="positivo">R$ 1.000,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>102</td>
-              <td>05/04/2025</td>
-              <td class="positivo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+          <?php 
+            $key = 0;
+              foreach($resultEntradaBanco as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalEntradaBanco += $row['valor'];
+                $totalEntrada += $row['valor'];
+              }
+            ?>
           </tbody>
         </table>
       </div>
@@ -146,18 +210,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>201</td>
-              <td>02/04/2025</td>
-              <td class="negativo">R$ 700,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>202</td>
-              <td>06/04/2025</td>
-              <td class="negativo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+          <?php 
+            $key = 0;
+              foreach($resultSaidaFisico as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalSaidaFisico += $row['valor'];
+                $totalSaida += $row['valor'];
+              }
+          ?>
           </tbody>
         </table>
       </div>
@@ -178,18 +248,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>201</td>
-              <td>02/04/2025</td>
-              <td class="negativo">R$ 700,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>202</td>
-              <td>06/04/2025</td>
-              <td class="negativo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+          <?php 
+            $key = 0;
+              foreach($resultSaidaCartao as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalSaidaCartao += $row['valor'];
+                $totalSaida += $row['valor'];
+              }
+          ?>
           </tbody>
         </table>
       </div>
@@ -210,18 +286,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>201</td>
-              <td>02/04/2025</td>
-              <td class="negativo">R$ 700,00</td>
-              <td>Admin</td>
-            </tr>
-            <tr>
-              <td>202</td>
-              <td>06/04/2025</td>
-              <td class="negativo">R$ 500,00</td>
-              <td>Admin</td>
-            </tr>
+          <?php 
+            $key = 0;
+              foreach($resultSaidaBanco as $row){
+                $sqlNome = "SELECT * FROM SistemaOficina.Usuarios WHERE idUsuario = ".$row['idUsuario'];
+                $resultNome = $conn->query($sqlNome);
+                $nome = $resultNome->fetch_assoc();
+
+                $dataFormatada = date('d/m/Y', strtotime($row['data']));
+                echo "<tr>";
+                echo "<td>".$key++."</td>";
+                echo "<td>".$dataFormatada."</td>";
+                echo "<td>R$ ".$row['valor']."</td>";
+                echo "<td>".$nome['nome']."</td>";
+                echo "</tr>";
+                $totalSaidaBanco += $row['valor'];
+                $totalSaida += $row['valor'];
+              }
+          ?>
           </tbody>
         </table>
       </div>
@@ -248,37 +330,15 @@
 
           <tbody>
             <tr>
-              <td class="positivo">R$ 300,00</td>
-              <td class="positivo">R$ 500,00</td>
-              <td class="positivo">R$ 600,00</td>
-              <td class="positivo">R$ 1400,00</td>
-              <td class="negativo">R$ 100,00</td>
-              <td class="negativo">R$ 200,00</td>
-              <td class="negativo">R$ 100,00</td>
-              <td class="negativo">R$ 400,00</td>
-              <td class="positivo">R$ 1000,00</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- O.S E ORÇAMENTOS -->
-    <section id="resumo">
-      <h2 class="section-title">Resumo Serviços</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th>Ordens de Serviço</th>
-              <th>Orçamentos</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>20</td>
-              <td>20</td>
+              <td class="positivo">R$ <?php echo $totalEntradaFisico ?></td>
+              <td class="positivo">R$ <?php echo $totalEntradaCartao ?></td>
+              <td class="positivo">R$ <?php echo $totalEntradaBanco ?></td>
+              <td class="positivo">R$ <?php echo $totalEntrada ?></td>
+              <td class="negativo">R$ <?php echo $totalSaidaFisico?></td>
+              <td class="negativo">R$ <?php echo $totalSaidaCartao?></td>
+              <td class="negativo">R$ <?php echo $totalSaidaBanco?></td>
+              <td class="negativo">R$ <?php echo $totalSaida?></td>
+              <td class="positivo">R$ <?php echo $totalEntrada + $totalSaida?></td>
             </tr>
           </tbody>
         </table>

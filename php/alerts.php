@@ -35,6 +35,15 @@ if(isset($_GET['BD'])){
         case 'acesso':
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Usuário ou senha incorretos! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
+        case 'nomeNencontrado':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">Cliente não encontrado! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'orcamentoNencontrado':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">N° Identificador do orcamento não encontrado! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'osNencontrado':
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">N° Identificador da ordem de serviço não encontrado! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
 
         #OK
         case 'cliente':
@@ -57,6 +66,15 @@ if(isset($_GET['BD'])){
             break;
         case 'addUser':
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Usuário adicionado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'addAgenda':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Agendado com sucesso!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'concluido':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Serviço concluido!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
+            break;
+        case 'excluido':
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Serviço excluido!  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>';
             break;
     }
 }

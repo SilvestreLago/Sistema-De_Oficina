@@ -9,7 +9,7 @@ $dataEntrada = htmlspecialchars(strip_tags($_POST['dataEntrada'])) ?? NULL;
 $dataSaida = htmlspecialchars(strip_tags($_POST['dataSaida'])) ?? NULL;
 $observacao = htmlspecialchars(strip_tags($_POST['observacao'])) ?? NULL;
 
-if($nIdentificador != NULL){
+if($nIdentificador != NULL and $dataEntrada != NULL and $nome != NULL){
 
     #ID CLIENTE
     $sqlID = "SELECT idCliente FROM SistemaOficina.Cliente WHERE nome = ?";
@@ -57,39 +57,39 @@ if($nIdentificador != NULL){
         #SQLINJECTION
         $stmt->bind_param('sisssssi', $nome, $nIdentificador, $dataEntradaFormatada, $dataSaidaFormatada, $observacao, $fotoAntes, $fotoDepois, $idCliente);
 
+        # MOVENDO A FOTO ANTES PARA O DIRETÓRIO DE FOTOS
+        if(!empty($_FILES['fotoAntes']) && $_FILES['fotoAntes']['error'] === UPLOAD_ERR_OK){
+            $destinoAntes = "../fotosAntes/$nIdentificador.png";
+            if(move_uploaded_file($_FILES['fotoAntes']["tmp_name"], $destinoAntes)) {
+                $fotoAntes = $destinoAntes;
+            }else{
+                $conn->close();
+                header('Location: ../pag/ordemServico.php?BD=fotoAntes');
+                exit;
+            }
+        } else{
+            $fotoAntes = NULL; 
+        }
+
+        # MOVENDO A FOTO DEPOIS PARA O DIRETÓRIO DE FOTOS
+        if(!empty($_FILES['fotoDepois']) && $_FILES['fotoDepois']['error'] === UPLOAD_ERR_OK){
+            $destinoDepois = "../fotosDepois/$nIdentificador.png";
+            if(move_uploaded_file($_FILES['fotoDepois']["tmp_name"], $destinoDepois)) {
+                $fotoDepois = $destinoDepois;
+            } else{
+                $conn->close();
+                header('Location: ../pag/ordemServico.php?BD=fotoDepois');
+                exit;
+            }
+        } else{
+            $fotoDepois = NULL;
+        }
+
         #OK
         try{
             $stmt->execute();
             $stmt->close();
             $conn->close();
-
-            # MOVENDO A FOTO ANTES PARA O DIRETÓRIO DE FOTOS
-            if(!empty($_FILES['fotoAntes']) && $_FILES['fotoAntes']['error'] === UPLOAD_ERR_OK){
-                $destinoAntes = "../fotosAntes/$nIdentificador.png";
-                if(move_uploaded_file($_FILES['fotoAntes']["tmp_name"], $destinoAntes)) {
-                    $fotoAntes = $destinoAntes;
-                }else{
-                    $conn->close();
-                    header('Location: ../pag/ordemServico.php?BD=fotoAntes');
-                    exit;
-                }
-            } else{
-                $fotoAntes = NULL; 
-            }
-
-            # MOVENDO A FOTO DEPOIS PARA O DIRETÓRIO DE FOTOS
-            if(!empty($_FILES['fotoDepois']) && $_FILES['fotoDepois']['error'] === UPLOAD_ERR_OK){
-                $destinoDepois = "../fotosDepois/$nIdentificador.png";
-                if(move_uploaded_file($_FILES['fotoDepois']["tmp_name"], $destinoDepois)) {
-                    $fotoDepois = $destinoDepois;
-                } else{
-                    $conn->close();
-                    header('Location: ../pag/ordemServico.php?BD=fotoDepois');
-                    exit;
-                }
-            } else{
-                $fotoDepois = NULL;
-            }
 
             header('Location: ../pag/ordemServico.php?BD=ordemServico');
             exit;

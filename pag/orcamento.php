@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputData1" class="form-label">Data:</label>
-            <input type="date" class="form-control" id="exampleInputData1" aria-describedby="dataHelp" name="data">
+            <input type="date" class="form-control" id="exampleInputData1" aria-describedby="dataHelp" name="data" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputValor1" class="form-label">Valor R$:</label>

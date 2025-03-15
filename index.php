@@ -1,3 +1,11 @@
+<?php 
+#VERIFICA SE O USUÁRIO ESTÁ LOGADO VIA SESSÃO
+session_start();
+if(isset($_SESSION['login'])){
+    header('Location: ./pag/index.php');
+    exit();
+}
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>

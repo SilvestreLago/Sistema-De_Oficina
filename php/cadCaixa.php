@@ -1,6 +1,9 @@
+
 <?php 
 #CONECTAR AO BD
 include_once './conexao.php';
+
+date_default_timezone_set('America/Sao_Paulo');
 
 #COLETA DOS DADOS
 session_start();

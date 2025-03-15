@@ -79,10 +79,10 @@ if($endereco != NULL){
 
 #NOME
 if($nome != NULL){
-    $sqlNome = "UPDATE Cliente SET nome = ? WHERE nome = ?";
+    $sqlNome = "UPDATE Cliente c LEFT JOIN Orcamento o ON c.idCliente = o.idCliente LEFT JOIN ordemServico os ON c.idCliente = os.idCliente SET c.nome = ?, o.nome = ?, os.nome = ? WHERE c.nome = ?;";
     $stmtNome = $conn->prepare($sqlNome);
     if($stmtNome){
-        $stmtNome->bind_param('ss', $nome, $nomeAntigo);
+        $stmtNome->bind_param('ssss', $nome, $nome, $nome, $nomeAntigo);
         try{
             $stmtNome->execute();
             $stmtNome->close();

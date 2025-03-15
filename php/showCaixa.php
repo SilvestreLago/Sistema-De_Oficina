@@ -2,6 +2,8 @@
 #CONECTAR AO BD
 include_once '../php/conexao.php';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 #DATA
 $data = new DateTime();
 $data = $data->format("Y-m-d");

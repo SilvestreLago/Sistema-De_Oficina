@@ -13,23 +13,23 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">ADICIONE NA AGENDA</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="POST">
+            <form action="../php/cadAgenda.php" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nome do cliente:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Fulano da Silva" name="nome">
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Fulano da Silva" name="nome" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Data: </label>
-                        <input class="form-control" id="exampleFormControlTextarea1" name="data" type="date"></input>
+                        <input class="form-control" id="exampleFormControlTextarea1" name="data" type="date" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">N° do orçamento:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="orcamento">
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="orcamento" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">N° da O.S:</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os">
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os" required>
                     </div>
                 </div>
 
@@ -45,53 +45,23 @@
 <?php include_once "main.php";?>
 
 <div class="container" style="margin-top: 10%;">
+    <?php include_once '../php/alerts.php'?>
     <table class="table table-hover table-bordered">
-    <thead>
+        <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nome:</th>
           <th scope="col">Data:</th>
           <th scope="col">N° Orçamento:</th>
           <th scope="col">N° O.S:</th>
-          <th scope="col">Editar:</th>
-          <th scope="col">Excluir:</th>
+          <th scope="col">Exluir:</th>
+          <th scope="col">Concluir:</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr>
-            <th scope="row">1</th>
-            <td>Fulano</td>
-            <td>08/02/2025</td>
-            <td>00001</td>
-            <td>00001</td>
-            <td>
-                <a href="" style="text-decoration: none; color: orange;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>
-                </a>
-            </td>
-            <td>
-                <a href="" style="text-decoration: none; color: red;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Beltrano</td>
-            <td>08/02/2025</td>
-            <td>00002</td>
-            <td>00002</td>
-            <td>
-                <a href="" style="text-decoration: none; color: orange;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>
-                </a>
-            </td>
-            <td>
-                <a href="" style="text-decoration: none; color: red;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/></svg>
-                </a>
-            </td>
-        </tr>
+        <form action="../php/concluir.php" method="post">
+            <?php include_once '../php/verAgenda.php'?>
+        </form>
       </tbody>
     </table>
 </div>

@@ -41,7 +41,7 @@ if ($nome != NULL) {
                             <label for="exampleInputCPF1" class="form-label">CPF:</label>
                             <input type="number" class="form-control" id="exampleInputCPF1" aria-describedby="cpfHelp" placeholder="'.$cpf.'" max="99999999999" name="cpf">
                         </div>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
                     </form>
                 </div>';
         }
