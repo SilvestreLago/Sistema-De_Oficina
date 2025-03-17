@@ -25,11 +25,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">N° do orçamento:</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="orcamento" required>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="orcamento">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">N° da O.S:</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os" required>
+                        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="000000" name="os">
                     </div>
                 </div>
 

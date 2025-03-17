@@ -17,38 +17,14 @@ if($nIdentificador != NULL and $nome != NULL and $data != NULL){
         $dataFormatada = NULL;
     }
 
-    #ID CLIENTE
-    $sqlID = "SELECT idCliente FROM SistemaOficina.Cliente WHERE nome = ?";
-    $stmtID = $conn->prepare($sqlID);
-
-    if($stmtID){
-        $stmtID->bind_param('s', $nome);
-        if($stmtID->execute()){
-            $resultID = $stmtID->get_result();
-            $idCliente = $resultID->fetch_assoc()['idCliente'];
-            $stmtID->close();
-            echo $idCliente;
-            if($idCliente == NULL){
-                $conn->close();
-                header('Location: ../pag/orcamento.php?BD=IDCliente');
-                exit;
-            }
-        }else{
-            $stmtID->close();
-            $conn->close();
-            header('Location: ../pag/orcamento.php?BD=IDCliente');
-            exit;
-        }
-    }
-
     #SQL
-    $sql = "INSERT INTO SistemaOficina.Orcamento (nome, nIdentificador, data, valor, descricao, idCliente) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO SistemaOficina.Orcamento (nome, nIdentificador, data, valor, descricao) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     #VERIFICACAO
     if($stmt){
         #SQLINJECTION
-        $stmt->bind_param('sisisi', $nome, $nIdentificador, $dataFormatada, $valor, $descricao, $idCliente);
+        $stmt->bind_param('sisis', $nome, $nIdentificador, $dataFormatada, $valor, $descricao);
 
         #OK
         try{

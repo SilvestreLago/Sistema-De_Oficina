@@ -8,65 +8,30 @@ $nome = htmlspecialchars(strip_tags($_POST['nome'])) ?? NULL;
 $orcamento = htmlspecialchars(strip_tags($_POST['orcamento'])) ?? NULL;
 $os = htmlspecialchars(strip_tags($_POST['os'])) ?? NULL;
 
-if($nome != NULL && $data != NULL && $orcamento != NULL && $os != NULL){
+if($nome != NULL && $data != NULL){
     #SQL
-    $sqlNome = "SELECT idCliente FROM SistemaOficina.Cliente WHERE nome = ?";
     $sqlOrcamento = "SELECT idOrcamento FROM SistemaOficina.Orcamento WHERE nIdentificador = ?";
     $sqlOs = "SELECT idOrdemServico FROM SistemaOficina.ordemServico WHERE nIdentificador = ?";
-    $sqlAgenda = "INSERT INTO SistemaOficina.Agenda (idCliente, idOrcamento, idOrdemServico, data, concluido) VALUES (?, ?, ?, ?, FALSE)";
+    $sqlAgenda = "INSERT INTO SistemaOficina.Agenda (nomeCliente, idOrcamento, idOrdemServico, data, concluido) VALUES (?, ?, ?, ?, FALSE)";
 
     #PREPARAR SQL
-    $stmtNome = $conn->prepare($sqlNome);
     $stmtOrcamento = $conn->prepare($sqlOrcamento);
     $stmtOs = $conn->prepare($sqlOs);
     $stmtAgenda = $conn->prepare($sqlAgenda);
 
-    if($stmtNome and $stmtOrcamento and $stmtOs and $stmtAgenda){
+    if($stmtOrcamento and $stmtOs and $stmtAgenda){
         #COLETA DOS DADOS
-        $stmtNome->bind_param("s", $nome);
         $stmtOrcamento->bind_param("i", $orcamento);
         $stmtOs->bind_param("i", $os);
-
-        #NOME
-        if($stmtNome->execute()){
-            $resultNome = $stmtNome->get_result();
-            $resultNome = $resultNome->fetch_assoc();
-            if($resultNome == NULL){
-                $conn->close();
-                $stmtNome->close();
-                $stmtOrcamento->close();
-                $stmtOs->close();
-                header("Location: ../pag/agenda.php?BD=nomeNencontrado");
-                exit();
-            }
-            $idNome = $resultNome['idCliente'];
-        }
-        else{
-            $conn->close();
-            $stmtNome->close();
-            $stmtOrcamento->close();
-            $stmtOs->close();
-            header("Location: ../pag/agenda.php?BD=exec");
-            exit();
-        }
 
         #ORCAMENTO
         if($stmtOrcamento->execute()){
             $resultOrcamento = $stmtOrcamento->get_result();
             $resultOrcamento = $resultOrcamento->fetch_assoc();
-            if($resultOrcamento == NULL){
-                $conn->close();
-                $stmtNome->close();
-                $stmtOrcamento->close();
-                $stmtOs->close();
-                header("Location: ../pag/agenda.php?BD=orcamentoNencontrado");
-                exit();
-            }
             $idOrcamento = $resultOrcamento['idOrcamento'];
         }
         else{
             $conn->close();
-            $stmtNome->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             header("Location: ../pag/agenda.php?BD=exec");
@@ -77,19 +42,10 @@ if($nome != NULL && $data != NULL && $orcamento != NULL && $os != NULL){
         if($stmtOs->execute()){
             $resultOs = $stmtOs->get_result();
             $resultOs = $resultOs->fetch_assoc();
-            if($resultOs == NULL){
-                $conn->close();
-                $stmtNome->close();
-                $stmtOrcamento->close();
-                $stmtOs->close();
-                header("Location: ../pag/agenda.php?BD=osNencontrado");
-                exit();
-            }
             $idOs = $resultOs['idOrdemServico'];
         }
         else{
             $conn->close();
-            $stmtNome->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             header("Location: ../pag/agenda.php?BD=exec");
@@ -97,10 +53,9 @@ if($nome != NULL && $data != NULL && $orcamento != NULL && $os != NULL){
         }
 
         #INSERINDO OS DADOS
-        $stmtAgenda->bind_param("iiis", $idNome, $idOrcamento, $idOs, $data);
+        $stmtAgenda->bind_param("siis", $nome, $idOrcamento, $idOs, $data);
 
         if($stmtAgenda->execute()){
-            $stmtNome->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             $stmtAgenda->close();
@@ -111,7 +66,6 @@ if($nome != NULL && $data != NULL && $orcamento != NULL && $os != NULL){
 
         else{
             $conn->close();
-            $stmtNome->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             $stmtAgenda->close();

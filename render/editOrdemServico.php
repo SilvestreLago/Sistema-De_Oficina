@@ -17,8 +17,8 @@ if ($nIdentificador != NULL) {
 
             $nome = $valores['nome'];
             $nIdentificador = $valores['nIdentificador'];
-            $dataEntrada = $valores['dataEntrada'];
-            $dataSaida = $valores['dataSaida'];
+            $dataEntrada = date('d/m/Y', strtotime($valores['dataEntrada']));;
+            $dataSaida = date('d/m/Y', strtotime($valores['dataSaida']));;
             $observacao = $valores['observacao'];
             $fotoAntes = $valores['fotoAntes'];
             $fotoDepois = $valores['fotoDepois'];

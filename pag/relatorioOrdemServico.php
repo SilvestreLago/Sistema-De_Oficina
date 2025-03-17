@@ -79,6 +79,11 @@
       <p style="text-align: center;">Ordem de Serviço gerado em: <?php echo $dataFormatadaEntrada;?></p>
     </header>
 
+    <p><strong>Telefone para contato:</strong>(74) 9 9975-2939</p>
+    <p><strong>Telefone para contato:</strong>(74) 9 9191-4191</p>
+    <p><strong>Telefone para contato:</strong>(74) 9 9128-9767</p>
+    <p><strong>Endereço:</strong>Rua Coronel Hermenegildo, 126 - Missão - Jacobina - BA.</p>
+
     <!-- ORCAMENTO -->
     <section id="estoque">
         <h2 class="section-title">Ordem de Serviço:</h2>
@@ -93,10 +98,6 @@
         <p><strong>Número de identificação:</strong> <?php echo "$nIdentificador"?></p>
         <hr>
     </section>
-    <p><strong>Telefone para contato:</strong>(74) 9 9975-2939</p>
-    <p><strong>Telefone para contato:</strong>(74) 9 9191-4191</p>
-    <p><strong>Telefone para contato:</strong>(74) 9 9128-9767</p>
-    <p><strong>Endereço:</strong>Rua Coronel Hermenegildo, 126 - Missão - Jacobina - BA.</p>
 </div>
 </body>
 </html>

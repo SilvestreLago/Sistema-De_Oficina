@@ -13,7 +13,7 @@ if($nome != NULL){
 
     #VERIFICAÇÃO
     if($stmt){
-        $stmt->bind_param('si', $nome, $quantidade);
+        $stmt->bind_param('ss', $nome, $quantidade);
 
         #OK
         try{

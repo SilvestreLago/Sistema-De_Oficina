@@ -22,7 +22,7 @@ if($remover == 'TRUE' and $remover != NULL){
 
 if($user and $valor and $tipo and $data and $remover){
     #COLETAR O ID DO USUARIO
-    $sql = 'SELECT idUsuario FROM SistemaOficina.Usuarios as U WHERE U.Nome = ?';
+    $sql = 'SELECT idUsuario FROM SistemaOficina.Usuarios WHERE Nome = ?';
     $stmt = $conn->prepare($sql);
 
     if($stmt){
@@ -38,7 +38,7 @@ if($user and $valor and $tipo and $data and $remover){
             $stmt = $conn->prepare($sql);
 
             if($stmt){
-                $stmt->bind_param('dssi', $valor, $tipo, $data, $idUsuario);
+                $stmt->bind_param('dssi', $valor, $tipo, $data, $idUsuario['idUsuario']);
 
                 if($stmt->execute()){
                     #EXECUÇÃO OK INSERT

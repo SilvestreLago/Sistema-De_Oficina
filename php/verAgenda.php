@@ -11,50 +11,36 @@ $stmt->close();
 foreach($agendas as $key => $value){
     $idAgenda = $value['idAgenda'];
     $data = date('d/m/Y', strtotime($value['data']));
-    $idCliente = $value['idCliente'];
+    $nomeCliente = $value['nomeCliente'];
     $idOrcamento = $value['idOrcamento'];
     $idOrdemServico = $value['idOrdemServico'];    
 
     #SQL VALOR
-    $sqlCliente = "SELECT nome FROM SistemaOficina.Cliente WHERE idCliente = ?";
     $sqlOrcamento = "SELECT nIdentificador FROM SistemaOficina.Orcamento WHERE idOrcamento = ?";
     $sqlOs = "SELECT nIdentificador FROM SistemaOficina.ordemServico WHERE idOrdemServico = ?";
 
     #PREPARAR SQL
-    $stmtCliente = $conn->prepare($sqlCliente);
     $stmtOrcamento = $conn->prepare($sqlOrcamento);
     $stmtOs = $conn->prepare($sqlOs);
 
-    if($stmtCliente and $stmtOrcamento and $stmtOs){
+    if($stmtOrcamento and $stmtOs){
         #COLETA DOS DADOS
-        $stmtCliente->bind_param("i", $idCliente);
         $stmtOrcamento->bind_param("i", $idOrcamento);
         $stmtOs->bind_param("i", $idOrdemServico);
-
-        #CLIENTE
-        if($stmtCliente->execute()){
-            $resultCliente = $stmtCliente->get_result();
-            $resultCliente = $resultCliente->fetch_assoc();
-            $cliente = $resultCliente['nome'];
-        }
-        else{
-            $conn->close();
-            $stmtCliente->close();
-            $stmtOrcamento->close();
-            $stmtOs->close();
-            header("Location: ../pag/agenda.php?BD=exec");
-            exit();
-        }
 
         #ORCAMENTO
         if($stmtOrcamento->execute()){
             $resultOrcamento = $stmtOrcamento->get_result();
             $resultOrcamento = $resultOrcamento->fetch_assoc();
-            $orcamento = $resultOrcamento['nIdentificador'];
+            if($resultOrcamento != NULL){
+                $orcamento = $resultOrcamento['nIdentificador'];
+            }
+            else{
+                $orcamento = "Não Cadastrado";
+            }
         }
         else{
             $conn->close();
-            $stmtCliente->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             header("Location: ../pag/agenda.php?BD=exec");
@@ -65,11 +51,15 @@ foreach($agendas as $key => $value){
         if($stmtOs->execute()){
             $resultOs = $stmtOs->get_result();
             $resultOs = $resultOs->fetch_assoc();
-            $os = $resultOs['nIdentificador'];
+            if($resultOs != NULL){
+                $os = $resultOs['nIdentificador'];
+            }
+            else{
+                $os = "Não Cadastrado";
+            }
         }
         else{
             $conn->close();
-            $stmtCliente->close();
             $stmtOrcamento->close();
             $stmtOs->close();
             header("Location: ../pag/agenda.php?BD=exec");
@@ -78,7 +68,6 @@ foreach($agendas as $key => $value){
     }
     else{
         $conn->close();
-        $stmtCliente->close();
         $stmtOrcamento->close();
         $stmtOs->close();
         header("Location: ../pag/agenda.php?BD=stmt");
@@ -87,7 +76,7 @@ foreach($agendas as $key => $value){
 
     echo "<tr>";
     echo "<th scope='row'>".($key+1)."</th>";
-    echo "<td>".$cliente."</td>";
+    echo "<td>".$nomeCliente."</td>";
     echo "<td>".$data."</td>";
     echo "<td>".$orcamento."</td>";
     echo "<td>".$os."</td>";

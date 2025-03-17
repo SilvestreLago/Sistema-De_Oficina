@@ -22,7 +22,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Fisico" required>
                             <input type="hidden" name="remover" value="FALSE" required>
-                            <span class="input-group-text"><input type="submit" value="ADICIONAR" class="btn btn-primary"></span>
+                            <span class="input-group-text"><input type="submit" value="ENTRADA" class="btn btn-primary"></span>
                         </div>
                     </form>
                     <form action="../php/cadCaixa.php" method="post">
@@ -31,7 +31,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Fisico" required>
                             <input type="hidden" name="remover" value="TRUE" required>
-                            <span class="input-group-text"><input type="submit" value="REMOVER" class="btn btn-danger"></span>
+                            <span class="input-group-text"><input type="submit" value="SAIDA" class="btn btn-danger"></span>
                         </div>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Cartao" required>
                             <input type="hidden" name="remover" value="FALSE" required>
-                            <span class="input-group-text"><input type="submit" value="ADICIONAR" class="btn btn-primary"></span>
+                            <span class="input-group-text"><input type="submit" value="ENTRADA" class="btn btn-primary"></span>
                         </div>
                     </form>
                     <form action="../php/cadCaixa.php" method="post">
@@ -59,7 +59,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Cartao" required>
                             <input type="hidden" name="remover" value="TRUE" required>
-                            <span class="input-group-text"><input type="submit" value="REMOVER" class="btn btn-danger"></span>
+                            <span class="input-group-text"><input type="submit" value="SAIDA" class="btn btn-danger"></span>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Banco" required>
                             <input type="hidden" name="remover" value="FALSE" required>
-                            <span class="input-group-text"><input type="submit" value="ADICIONAR" class="btn btn-primary"></span>
+                            <span class="input-group-text"><input type="submit" value="ENTRADA" class="btn btn-primary"></span>
                         </div>
                     </form>
                     <form action="../php/cadCaixa.php" method="post">
@@ -87,7 +87,7 @@
                             <input type="number" step="0.01" min="0" class="form-control" name="valor" placeholder="00,00" max="99999999" required>
                             <input type="hidden" name="tipo" value="Banco" required>
                             <input type="hidden" name="remover" value="TRUE" required>
-                            <span class="input-group-text"><input type="submit" value="REMOVER" class="btn btn-danger"></span>
+                            <span class="input-group-text"><input type="submit" value="SAIDA" class="btn btn-danger"></span>
                         </div>
                     </form>
                 </div>

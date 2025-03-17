@@ -28,7 +28,7 @@ if ($nome != NULL) {
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputQuantidade1" class="form-label">Quantidade:</label>
-                            <input type="number" class="form-control" id="exampleInputQuantidade1" aria-describedby="quantidadeHelp" placeholder="'.$quantidade.'" max="999999999" name="quantidade">
+                            <input type="text" class="form-control" id="exampleInputQuantidade1" aria-describedby="quantidadeHelp" placeholder="'.$quantidade.'" name="quantidade">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Editar</button>

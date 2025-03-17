@@ -11,34 +11,10 @@ $descricao = htmlspecialchars(strip_tags($_POST['descricao'])) ?? NULL;
 
 #NOME
 if($nome != NULL){
-    $sqlIdCliete = "SELECT * FROM Cliente WHERE nome = ?";
-    $stmtIdCliente = $conn->prepare($sqlIdCliete);
-
-    if($stmtIdCliente){
-        $stmtIdCliente->bind_param('s', $nome);
-        if($stmtIdCliente->execute()){
-            $resultado = $stmtIdCliente->get_result();
-            $valores = $resultado->fetch_assoc();
-            $idCliente = $valores['idCliente'];
-            $stmtIdCliente->close();
-        }
-        else{
-            $stmtIdCliente->close();
-            $conn->close();
-            header('Location: ../pag/verOrcamento.php?BD=exec');
-            exit;
-        }
-    }
-    else{
-        $conn->close();
-        header('Location: ../pag/verOrcamento.php?BD=stmt');
-        exit;
-    }
-
-    $sqlNome = "UPDATE Orcamento SET nome = ?, idCliente = ? WHERE nIdentificador = ?";
+    $sqlNome = "UPDATE Orcamento SET nome = ? WHERE nIdentificador = ?";
     $stmtNome = $conn->prepare($sqlNome);
     if($stmtNome){
-        $stmtNome->bind_param('sii', $nome, $idCliente, $nIdentificadorAntigo);
+        $stmtNome->bind_param('si', $nome, $nIdentificadorAntigo);
         try{
             $stmtNome->execute();
             $stmtNome->close();

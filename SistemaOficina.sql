@@ -15,9 +15,7 @@ create table Orcamento(
 	nIdentificador int(10) UNIQUE,
 	data date,
 	valor int(10),
-	descricao varchar(500),
-	idCliente int not null,
-	FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
+	descricao varchar(500)
 );
 
 create table ordemServico(
@@ -36,7 +34,7 @@ create table ordemServico(
 create table Estoque(
 	idEstoque int not null auto_increment primary key,
 	nome varchar(50) UNIQUE,
-	quantidade int(10)
+	quantidade varchar(30)
 );
 
 create table Usuarios(
@@ -58,11 +56,10 @@ create table Caixa(
 create table Agenda(
 	idAgenda int not null auto_increment primary key,
 	data date,
-	idCliente int not null,
-	FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente),
-	idOrcamento int not null,
+	nomeCliente varchar(50),
+	idOrcamento int,
 	FOREIGN KEY (idOrcamento) REFERENCES Orcamento(idOrcamento),
-	idOrdemServico int not null,
+	idOrdemServico int,
 	FOREIGN KEY (idOrdemServico) REFERENCES ordemServico(idOrdemServico),
 	concluido bool
 );

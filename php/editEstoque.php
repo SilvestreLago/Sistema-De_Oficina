@@ -11,7 +11,7 @@ if($quantidade != NULL){
     $sqlQuantidade = "UPDATE Estoque SET quantidade = ? WHERE nome = ?";
     $stmtQuantidade = $conn->prepare($sqlQuantidade);
     if($stmtQuantidade){
-        $stmtQuantidade->bind_param('is', $quantidade, $nomeAntigo);
+        $stmtQuantidade->bind_param('ss', $quantidade, $nomeAntigo);
         if($stmtQuantidade->execute()){
             $stmtQuantidade->close();
         }

@@ -17,7 +17,7 @@ if ($nIdentificador != NULL) {
 
             $nome = $valores['nome'];
             $nIdentificador = $valores['nIdentificador'];
-            $data = $valores['data'];
+            $data = date('d/m/Y', strtotime($valores['data']));
             $valor = $valores['valor'];
             $descricao = $valores['descricao'];
 
