@@ -33,8 +33,8 @@ create table ordemServico(
 
 create table Estoque(
 	idEstoque int not null auto_increment primary key,
-	nome varchar(50) UNIQUE,
-	quantidade varchar(30)
+	nome varchar(500) UNIQUE,
+	quantidade varchar(500)
 );
 
 create table Usuarios(
